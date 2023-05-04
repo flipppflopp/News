@@ -4,6 +4,7 @@ import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import { connect } from 'react-redux'
 import GetTenArticles from "../../Requests/GetTenArticleRequest"
+import "./SearchArticles.css"
 
 function SearchArticles(props) {
   const [title, setTitle] = useState('');
@@ -49,28 +50,26 @@ function SearchArticles(props) {
       onSubmit={handleSubmit}
     >
       <div>
+        <h4 className='search_labels'>Title</h4>
         <TextField
           required
           id="title"
-          label="Title"
-          variant="outlined"
           value={title}
           onChange={(event) => setTitle(event.target.value)}
         />
       </div>
       <div>
+        <h4 className='search_labels'>Description</h4>
         <TextField
           required
           id="content"
-          label="Description"
           multiline
           rows={4}
-          variant="outlined"
           value={description}
           onChange={(event) => setDescription(event.target.value)}
         />
       </div>
-      <Button variant="contained" type="submit" style={{marginLeft: "8px"}}>
+      <Button className='search_button' variant="contained" type="submit" style={{marginLeft: "8px"}}>
         Search
       </Button>
     </Box>
