@@ -3,7 +3,7 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import { connect } from 'react-redux'
-import GetTenArticles from "../../Requests/ArticleRequests"
+import GetTenArticles from "../../Requests/GetTenArticleRequest"
 
 function SearchArticles(props) {
   const [title, setTitle] = useState('');

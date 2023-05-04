@@ -8,7 +8,7 @@ import "./MainPage.css"
 import Modal from 'react-modal';
 import "../Styles/Buttons.css"
 import SearchArticles from '../Components/SearchArticles/SearchArticles';
-import GetTenArticles from "../Requests/ArticleRequests"
+import GetTenArticles from "../Requests/GetTenArticleRequest"
 
 function MainPage(props) {
   const [showPopup, setShowPopup] = useState(false);
