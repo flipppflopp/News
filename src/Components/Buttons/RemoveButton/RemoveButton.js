@@ -1,5 +1,5 @@
 import { Button } from '@mui/material';
-import "../../Styles/Buttons.css"
+import "../../../Styles/Buttons.css"
 import { connect } from 'react-redux'
 
 function RemoveButton(props) {
@@ -11,8 +11,8 @@ function RemoveButton(props) {
 
     return (
         <div>
-            {props.article.createdByUser === true &&
-                <Button className="remove_button" onClick={RemoveArticleClick}>Remove</Button>
+            {props.article.createdByUser === true ?
+                <Button onClick={RemoveArticleClick}>Remove</Button> : <></>
             }
         </div>
       );

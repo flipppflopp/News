@@ -1,6 +1,8 @@
 import "./NewsList.css"
-import "../RemoveButton/RemoveButton"
-import RemoveButton from "../RemoveButton/RemoveButton";
+import "../Buttons/RemoveButton/RemoveButton"
+import RemoveButton from "../Buttons/RemoveButton/RemoveButton";
+import PinButton from "../Buttons/PinButton/PinButton"
+import { connect } from 'react-redux'
 
 function NewsList(props) {
     
@@ -12,7 +14,11 @@ function NewsList(props) {
               <h2>{article.title}</h2>
               <p>{article.description}</p>
               <p>Author: {article.author}</p>
-              <RemoveButton article={article}/>
+
+              <div className="bottom_right_button">
+                <RemoveButton article={article}/>
+                <PinButton article={article}/>
+              </div>
             </div>
           ))}
 
@@ -20,4 +26,18 @@ function NewsList(props) {
         </div>
       );
 }
-export default NewsList;
+
+
+const mapStateToProps = (state) => {
+  return {
+    news: state.news,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setNews: (news) => dispatch({ type: 'SET_NEWS', payload: news }),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(NewsList);

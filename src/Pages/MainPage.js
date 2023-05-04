@@ -7,6 +7,8 @@ import { Button } from '@mui/material';
 import "./MainPage.css"
 import Modal from 'react-modal';
 import "../Styles/Buttons.css"
+import SearchArticles from '../Components/SearchArticles/SearchArticles';
+import GetTenArticles from "../Requests/ArticleRequests"
 
 function MainPage(props) {
   const [showPopup, setShowPopup] = useState(false);
@@ -22,19 +24,7 @@ function MainPage(props) {
 
   useEffect(() => {
     if(props.news.length === 0){
-      axios.get('https://newsapi.org/v2/everything', {
-        params: {
-          sources: 'bbc-news',
-          sortBy: 'popularity',
-          apiKey: API_KEY
-        }
-      })
-      .then(response => {
-        props.setNews(response.data.articles.slice(0, 10));
-      })
-      .catch(error => {
-        console.log(error);
-      });
+      GetTenArticles(props)
     }
   }, [props]);
 
@@ -58,7 +48,7 @@ function MainPage(props) {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    var updatedNews = props.news;
+    var updatedNews = [...props.news];
     updatedNews.unshift({
       title: titleValue,
       description: descValue,
@@ -73,7 +63,9 @@ function MainPage(props) {
 
   return (
     <div>
-      <NewsList news={props.news}/>
+      <SearchArticles/>
+
+      <NewsList newsList={props.news}/>
 
       <Button className="add_button simple_button" onClick={togglePopup}>+</Button>
 
