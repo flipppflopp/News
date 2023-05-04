@@ -1,0 +1,13 @@
+.simple_button
+{
+    background-color: #1976d2 !important;
+    color: white !important;
+    margin: 5px !important;
+}
+
+.remove_button{
+    width: 10%;
+    bottom: 10% !important;
+    left: 80% !important;
+    font-size: 14px !important;
+  }
